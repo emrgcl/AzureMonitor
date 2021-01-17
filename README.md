@@ -47,9 +47,9 @@ Below is a table of default Data Sources in Log analytics and CmdLets to manage 
 | Data Source                  | CmdLets                                                      | Notes                          |
 |------------------------------|--------------------------------------------------------------|--------------------------------| 
 | Windows Event Logs           | New-AzOperationalInsightsWindowsEventDataSource              |                                |
-| Windows Perforamnce Counters | New-AzOperationalInsightsWindowsPerformanceCounterDataSource | Some notes those are important |
+| Windows Performance Counters | New-AzOperationalInsightsWindowsPerformanceCounterDataSource | Some notes those are important |
 | Linux Performance Counters   | New-AzOperationalInsightsLinuxPerformanceObjectDataSource    |                                |
-| IIS Logs                     | Enable-AzOperationalInsightsIISLogCollection                 |                                |
+| IIS Logs                     | Enable-AzOperationalInsightsIISLogCollection,Disable-AzOperationalInsightsIISLogCollection                 |                                |
 | Custom Logs                  | New-AzOperationalInsightsCustomLogDataSource                 |                                |
 | Syslog                       | New-AzOperationalInsightsLinuxSyslogDataSource               |                                |
 # References
