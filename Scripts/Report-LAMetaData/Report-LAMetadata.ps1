@@ -4,18 +4,41 @@
 .DESCRIPTION
     Script to help analyizing compliance of the data collected.
 .EXAMPLE
-    .\Report-LAMetadata.ps1 -ExportPath C:\Temp\LASchema -Verbose -TenantId xxxx -AppId yyyyy -logAnalyticsWorkspaceId zzzzzz -AppSecret GZ.... -SampleCount 10
+    .\Report-LAMetadata.ps1 -ExportPath C:\Temp\LASchema -Verbose -TenantId xxxx -AppId yyyyy -logAnalyticsWorkspaceId zzzzzz -AppSecret GZxxx -SampleCount 10
     
-    Explanation of what the example does
+    VERBOSE: [1/17/2021 4:09:16 PM] Script Started.
+    WARNING: TenantId '72f988bf-86f1-41af-91ab-2d7cd011db47' contains more than one active subscription. First one will be selected for further use. To select another subscription, use Set-AzContext.
+    WARNING: Unable to acquire token for tenant '11da1590-20b4-4904-9318-a727a2a59a24'
+    VERBOSE: POST https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token with -1-byte payload
+    VERBOSE: received 1418-byte response of content type application/json; charset=utf-8
+    VERBOSE: GET https://api.loganalytics.io/v1/workspaces/4d7a58f4-dea3-4478-bc0d-c33542a77425/metadata with 0-byte payload
+    VERBOSE: received 418084-byte response of content type application/json; charset=utf-8
+    VERBOSE: Started Working on oms/ChangeTracking with 2 tables which will be saved into 'C:\Temp\LASchema\Change Tracking.xlsx'
+    VERBOSE: Querying metadata and sampledata for table ConfigurationChange with ID t/ConfigurationChange
+    VERBOSE: Invoking query: 'ConfigurationChange | take 100'
+    VERBOSE: Querying metadata and sampledata for table ConfigurationData with ID t/ConfigurationData
+    VERBOSE: Invoking query: 'ConfigurationData | take 100'
+    .
+    .
+    .
+    .
+    VERBOSE: Querying metadata and sampledata for table VMProcess with ID t/VMProcess
+    VERBOSE: Invoking query: 'VMProcess | take 100'
+    VERBOSE: Ended Working on oms/VMInsights.
+    VERBOSE: [1/17/2021 4:21:10 PM] Script Ended.Duration: 714 seconds.
 #>
 [CmdletBinding()]
 Param(
-    [string]$TenantId = '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    [string]$AppId = '8c3063cf-92a6-44c6-a9c0-22ed87058420',
-    [string]$AppSecret = '1Gw.~zW~zlTCQ03WW~.824S9xwIVXl0.DE',
-    [string]$logAnalyticsWorkspaceId = '4d7a58f4-dea3-4478-bc0d-c33542a77425',
+    [Parameter(Mandatory=$true)]    
+    [string]$TenantId,
     [Parameter(Mandatory=$true)]
+    [string]$AppId,
+    [Parameter(Mandatory=$true)]
+    [string]$AppSecret,
+    [Parameter(Mandatory=$true)]
+    [string]$logAnalyticsWorkspaceId,
     [ValidateScript({Test-Path $_})]
+    [Parameter(Mandatory=$true)]
     [string]$ExportPath,
     [int32]$SampleCount=10
 
