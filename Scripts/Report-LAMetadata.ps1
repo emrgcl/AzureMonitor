@@ -113,7 +113,7 @@ Foreach ($TableGroup in $Metadata.tableGroups) {
 
     Foreach ($TableID in $TableIDs) {
         
-        $TableName = $tables.Where({$_.Id -eq $TableID}).Name
+        $TableName = $Metadata.tables.Where({$_.Id -eq $TableID}).Name
         Write-Verbose "Querying metadata and sampledata for table $TableName with ID $TableID"
         $DataToExort = @{
 
