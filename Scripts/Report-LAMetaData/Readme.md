@@ -1,4 +1,4 @@
-# Log Analytics Compliance Helper
+# Log Analytics Workspace Compliance Helper
 
 The script is developed to help analyzing the collected data compliance. The script runs for the desired worksapce, pulls the table schema for each solution (Table Groups) along with sample data and exports the results int o excel sheets per Solution.
 
